@@ -23,4 +23,33 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables and secrets
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Firebase and Google Cloud
+.firebase/
+.firebaserc
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+database-debug.log
+
+# API Keys and Credentials (extra safety)
+**/secrets.json
+**/credentials.json
+**/*-credentials.json
+**/*-secret.json
+**/*-secrets.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# OAuth and tokens
+**/token.json
+**/oauth-token.json
