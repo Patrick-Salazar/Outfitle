@@ -2,7 +2,7 @@ import { doc, getDoc, getDocs, collection, query, where, setDoc } from 'firebase
 import { db, auth } from '../config/firebase';
 import { signInWithGoogle, logOut as authLogOut } from './auth';
 
-// User helpers to replace base44 User API
+// User helpers for Firebase authentication and user management
 export const User = {
   // Get current user profile
   me: async () => {

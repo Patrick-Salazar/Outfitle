@@ -1,6 +1,6 @@
-# Migration from base44 to Google Services
+# Setup Guide - Outfitle
 
-This application has been migrated from base44 SDK to Google services (Firebase, Google Cloud).
+This application uses Google services (Firebase, Google Cloud, Google AI) for all backend functionality.
 
 ## Setup Instructions
 
@@ -127,39 +127,28 @@ service firebase.storage {
 npm run dev
 ```
 
-## Migration Changes
+## Code Structure
 
-### API Changes
+### Authentication
+- Firebase Authentication with Google Sign-In
+- `src/api/auth.js` - Auth helpers
+- `src/context/AuthContext.jsx` - Auth context
 
-| base44 SDK | Google Services |
-|------------|----------------|
-| `@base44/sdk` | `firebase`, `@google/generative-ai`, `googleapis` |
-| `base44.entities.ClothingItem` | Firestore entity classes |
-| `base44.auth` | Firebase Authentication |
-| `base44.integrations.Core.InvokeLLM` | Google Gemini AI |
-| `base44.integrations.Core.UploadFile` | Firebase Storage |
-| `base44.functions.googleCalendarEvents` | Google Calendar API |
+### Database
+- Firestore for data storage
+- `src/api/firestoreEntities.js` - Entity management
+- `src/api/userHelpers.js` - User operations
 
-### Code Structure Changes
+### Integrations
+- Google Gemini AI for outfit recommendations
+- Firebase Storage for image uploads
+- Google Calendar API for event integration
+- `src/api/googleServices.js` - AI and storage helpers
+- `src/api/googleCalendar.js` - Calendar API helpers
 
-1. **Authentication**:
-   - Changed from base44 auth to Firebase Auth
-   - Added `src/api/auth.js` for auth helpers
-   - Added `src/context/AuthContext.jsx` for auth context
-
-2. **Database**:
-   - Changed from base44 entities to Firestore
-   - Added `src/api/firestoreEntities.js` for entity management
-   - Added `src/api/userHelpers.js` for user operations
-
-3. **Integrations**:
-   - Changed from base44 integrations to Google Cloud services
-   - Added `src/api/googleServices.js` for AI, storage, etc.
-   - Added `src/api/googleCalendar.js` for Calendar API
-
-4. **Configuration**:
-   - Added `src/config/firebase.js` for Firebase initialization
-   - Changed from base44 appId to environment variables
+### Configuration
+- `src/config/firebase.js` - Firebase initialization
+- Environment variables for all API keys
 
 ## Additional Features to Implement
 
